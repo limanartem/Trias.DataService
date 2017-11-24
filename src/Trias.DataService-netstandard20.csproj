@@ -5,8 +5,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Trias.DataService</RootNamespace>
     <AssemblyName>Trias.DataService</AssemblyName>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.0.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.0.4</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Trias.DataService</RootNamespace>
+    <AssemblyName>Trias.DataService</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Trias.DataService-uwp\**" />
+    <Compile Remove="Trias.DataService\**" />
+    <EmbeddedResource Remove="Trias.DataService-uwp\**" />
+    <EmbeddedResource Remove="Trias.DataService\**" />
+    <None Remove="Trias.DataService-uwp\**" />
+    <None Remove="Trias.DataService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="v1_0\xsd\siri-1.4\ReadMe.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

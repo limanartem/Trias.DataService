@@ -8,10 +8,12 @@ using Trias.DataService.v1_0.DataModel;
 namespace Trias.DataService.Tests
 {
     [TestFixture]
-    public class LocationInformationRequestTests
+    public class RequestTests
     {
+        private const string KnownStationId = "de:08221:1160";
+
         [Test]
-        public async Task Request_Test()
+        public async Task LocationInformationRequest_Test()
         {
             //Arrange
             var client = new TriasServiceClient(ConfigHelper.TriasServiceUrl, ConfigHelper.TriasServiceRef);
@@ -26,8 +28,8 @@ namespace Trias.DataService.Tests
                         {
                             Center = new GeoPositionStructure
                             {
-                                Longitude = (decimal) 8.687699,
-                                Latitude = (decimal) 49.427390
+                                Longitude = 8.675760m,
+                                Latitude = 49.404274m
                             },
                             Radius = "100"
                         }
@@ -47,11 +49,45 @@ namespace Trias.DataService.Tests
 
             //Assert
             Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorMessage, Is.Null);
             Assert.That(result.Location, Is.Not.Null);
             Assert.That(result.Location.Length, Is.GreaterThan(0));
             Assert.IsInstanceOf<StopPointStructure>(result.Location[0].Location.Item);
             Assert.IsTrue(result.Location.Any(l =>
-                ((StopPointStructure) l.Location.Item).StopPointRef.Value == "de:08221:6827"));
+                ((StopPointStructure) l.Location.Item).StopPointRef.Value == KnownStationId));
         }
+
+        [Test]
+        public async Task StopEventResponseStructure_Test()
+        {
+            //Arrange
+            string knownStationId = KnownStationId;
+            var serviceClient = new TriasServiceClient(ConfigHelper.TriasServiceUrl, ConfigHelper.TriasServiceRef);
+
+            var input = new StopEventRequestStructure()
+            {
+                Location = new LocationContextStructure()
+                {
+                    Item = new LocationRefStructure()
+                    {
+                        Item = new StopPointRefStructure()
+                        {
+                            Value = knownStationId
+                        }
+                    }
+                }
+            };
+
+            //Act
+            var result = await serviceClient.Request(input);
+
+            //Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ErrorMessage, Is.Null);
+            Assert.That(result.StopEventResult, Is.Not.Null);
+            Assert.That(result.StopEventResult.Length, Is.GreaterThan(0));
+        }
+
+        //TODO: add test for all other supported methods
     }
 }

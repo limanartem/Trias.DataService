@@ -34,6 +34,97 @@ namespace Trias.DataService.v1_0
             return await Request<StopEventResponseStructure>(input);
         }
 
+        public async Task<BookingInfoResponseStructure> Request(BookingInfoRequestStructure input)
+        {
+            return await Request<BookingInfoResponseStructure>(input);
+        }
+
+        public async Task<ConnectionDemandDeleteResponseStructure> Request(ConnectionDemandDeleteRequestStructure input)
+        {
+            return await Request<ConnectionDemandDeleteResponseStructure>(input);
+        }
+   
+        public async Task<ConnectionDemandResponseStructure> Request(ConnectionDemandRequestStructure input)
+        {
+            return await Request<ConnectionDemandResponseStructure>(input);
+        }
+
+        public async Task<ConnectionReportResponseStructure> Request(ConnectionReportRequestStructure input)
+        {
+            return await Request<ConnectionReportResponseStructure>(input);
+        }
+
+        public async Task<ConnectionStatusResponseStructure> Request(ConnectionStatusRequestStructure input)
+        {
+            return await Request<ConnectionStatusResponseStructure>(input);
+        }
+
+        public async Task<FacilityStatusReportResponseStructure> Request(FacilityStatusReportStructure input)
+        {
+            return await Request<FacilityStatusReportResponseStructure>(input);
+        }
+
+        public async Task<FaresResponseStructure> Request(FaresRequestStructure input)
+        {
+            return await Request<FaresResponseStructure>(input);
+        }
+
+        public async Task<GeoCoordinatesResponseStructure> Request(GeoCoordinatesRequestStructure input)
+        {
+            return await Request<GeoCoordinatesResponseStructure>(input);
+        }
+
+        public async Task<ImageCoordinatesResponseStructure> Request(ImageCoordinatesRequestStructure input)
+        {
+            return await Request<ImageCoordinatesResponseStructure>(input);
+        }
+
+        public async Task<IndividualRouteResponseStructure> Request(IndividualRouteRequestStructure input)
+        {
+            return await Request<IndividualRouteResponseStructure>(input);
+        }
+
+        public async Task<MapServiceResponseStructure> Request(MapServiceRequestStructure input)
+        {
+            return await Request<MapServiceResponseStructure>(input);
+        }
+
+        public async Task<PersonalisationResponseStructure> Request(PersonalisationRequestStructure input)
+        {
+            return await Request<PersonalisationResponseStructure>(input);
+        }
+
+        public async Task<PositioningResponseStructure> Request(PositioningRequestStructure input)
+        {
+            return await Request<PositioningResponseStructure>(input);
+        }
+
+        public async Task<ServiceRegisterResponseStructure> Request(ServiceRegisterRequestStructure input)
+        {
+            return await Request<ServiceRegisterResponseStructure>(input);
+        }
+
+        public async Task<StopRequestResponseStructure> Request(StopRequestRequestStructure input)
+        {
+            return await Request<StopRequestResponseStructure>(input);
+        }
+
+        public async Task<TripInfoResponseStructure> Request(TripInfoRequestStructure input)
+        {
+            return await Request<TripInfoResponseStructure>(input);
+        }
+
+        public async Task<TripResponseStructure> Request(TripRequestStructure input)
+        {
+            return await Request<TripResponseStructure>(input);
+        }
+
+        public async Task<VehicleDataResponseStructure> Request(VehicleDataRequestStructure input)
+        {
+            return await Request<VehicleDataResponseStructure>(input);
+        }
+
+
         private async Task<T> Request<T>(object input)
         {
             using (var httpClient = new HttpClient())

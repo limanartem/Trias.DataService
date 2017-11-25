@@ -6,7 +6,7 @@
     <RootNamespace>Trias.DataService</RootNamespace>
     <AssemblyName>Trias.DataService</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0.4</Version>
+    <Version>1.0.0.16</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -15,14 +15,17 @@
    <RepositoryUrl>https://github.com/limanartem/Trias.DataService</RepositoryUrl>
    <PackageProjectUrl>https://github.com/limanartem/Trias.DataService</PackageProjectUrl>
    <RepositoryType>git</RepositoryType>
-   <PackageTags>trias</PackageTags>
+   <PackageTags>trias,public transport,vdv</PackageTags>
 </PropertyGroup> 
 
   <ItemGroup>
+    <Compile Remove="tests\**" />
     <Compile Remove="Trias.DataService-uwp\**" />
     <Compile Remove="Trias.DataService\**" />
+    <EmbeddedResource Remove="tests\**" />
     <EmbeddedResource Remove="Trias.DataService-uwp\**" />
     <EmbeddedResource Remove="Trias.DataService\**" />
+    <None Remove="tests\**" />
     <None Remove="Trias.DataService-uwp\**" />
     <None Remove="Trias.DataService\**" />
   </ItemGroup>

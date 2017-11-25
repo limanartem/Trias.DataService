@@ -49,7 +49,7 @@ var result = await client.Request(input);
 
 ````
 
-### Using syntactic sugar
+Using syntactic sugar
 
 
 ````csharp

@@ -18,31 +18,13 @@ namespace Trias.DataService.Tests
             //Arrange
             var client = new TriasServiceClient(ConfigHelper.TriasServiceUrl, ConfigHelper.TriasServiceRef);
 
-            var input = new LocationInformationRequestStructure
-            {
-                Item = new InitialLocationInputStructure
+            var input = new LocationInformationRequestStructure()
+                .WithGeoRestriction(new GeoPositionStructure
                 {
-                    GeoRestriction = new GeoRestrictionsStructure
-                    {
-                        Item = new GeoCircleStructure
-                        {
-                            Center = new GeoPositionStructure
-                            {
-                                Longitude = 8.675760m,
-                                Latitude = 49.404274m
-                            },
-                            Radius = "100"
-                        }
-                    }
-                },
-                Restrictions = new LocationParamStructure
-                {
-                    Type = new[]
-                    {
-                        LocationTypeEnumeration.stop
-                    }
-                }
-            };
+                    Longitude = 8.675760m,
+                    Latitude = 49.404274m
+                }, 100)
+                .WithTypeRestriction(LocationTypeEnumeration.stop);
 
             //Act
             var result = await client.Request(input);
@@ -65,19 +47,7 @@ namespace Trias.DataService.Tests
             var serviceClient = new TriasServiceClient(ConfigHelper.TriasServiceUrl, ConfigHelper.TriasServiceRef);
 
             var input = new StopEventRequestStructure()
-            {
-                Location = new LocationContextStructure()
-                {
-                    Item = new LocationRefStructure()
-                    {
-                        Item = new StopPointRefStructure()
-                        {
-                            Value = knownStationId
-                        }
-                    }
-                }
-            };
-
+                .SearchByStopPointRef(knownStationId);
             //Act
             var result = await serviceClient.Request(input);
 

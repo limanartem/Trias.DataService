@@ -16,7 +16,7 @@ namespace Trias.DataService.Tests.Helpers
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appcofig.json");
+                .AddJsonFile("appconfig.json");
 
             Configuration = builder.Build();
         }

@@ -47,4 +47,25 @@ var input = new LocationInformationRequestStructure()
 var result = await client.Request(input);
 
 
-```
+````
+
+### Using syntactic sugar
+
+
+````csharp
+
+var client = new TriasServiceClient(ConfigHelper.TriasServiceUrl, ConfigHelper.TriasServiceRef);
+
+var input = new LocationInformationRequestStructure()
+	.WithGeoRestriction(new GeoPositionStructure
+	{
+		Longitude = 8.675760m,
+		Latitude = 49.404274m
+	}, 100)
+	.WithTypeRestriction(LocationTypeEnumeration.stop);
+
+
+var result = await client.Request(input);
+
+
+````

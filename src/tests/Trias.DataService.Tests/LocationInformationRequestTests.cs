@@ -4,7 +4,6 @@ using NUnit.Framework;
 using Trias.DataService.Tests.Helpers;
 using Trias.DataService.v1_0;
 using Trias.DataService.v1_0.DataModel;
-using NU = NUnit.Framework;
 
 namespace Trias.DataService.Tests
 {
@@ -47,11 +46,11 @@ namespace Trias.DataService.Tests
             var result = await client.Request(input);
 
             //Assert
-            NU.Assert.That(result, Is.Not.Negative);
-            NU.Assert.That(result.Location, Is.Not.Negative);
-            NU.Assert.That(result.Location.Length, Is.GreaterThan(0));
-            NU.Assert.IsInstanceOf<StopPointStructure>(result.Location[0].Location.Item);
-            NU.Assert.IsTrue(result.Location.Any(l =>
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Location, Is.Not.Null);
+            Assert.That(result.Location.Length, Is.GreaterThan(0));
+            Assert.IsInstanceOf<StopPointStructure>(result.Location[0].Location.Item);
+            Assert.IsTrue(result.Location.Any(l =>
                 ((StopPointStructure) l.Location.Item).StopPointRef.Value == "de:08221:6827"));
         }
     }

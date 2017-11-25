@@ -15,7 +15,7 @@ namespace Trias.DataService.Tests.Helpers
         static ConfigHelper()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Path.GetDirectoryName(new Uri(typeof(ConfigHelper).Assembly.EscapedCodeBase).LocalPath))
                 .AddJsonFile("appconfig.json");
 
             Configuration = builder.Build();

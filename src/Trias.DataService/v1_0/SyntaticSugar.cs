@@ -70,5 +70,23 @@ namespace Trias.DataService.v1_0
             return input;
         }
 
+        /// <summary>
+        /// Specifies search stop point reference
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="stopPointRef">Id of the stop</param>
+        /// <returns></returns>
+        public static LocationInformationRequestStructure SearchByStopPointRef(this LocationInformationRequestStructure input, string stopPointRef)
+        {
+            input.Item = new LocationRefStructure()
+            {
+                Item = new StopPointRefStructure()
+                {
+                    Value = stopPointRef
+                }
+            };
+
+            return input;
+        }
     }
 }

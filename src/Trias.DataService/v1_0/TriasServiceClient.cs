@@ -13,7 +13,10 @@ namespace Trias.DataService.v1_0
     public sealed class TriasServiceClient
     {
         private readonly string _triasServiceRequestorRef;
-        private readonly XmlSerializer _serializer = new XmlSerializer(typeof(DataModel.Trias));
+
+        private static readonly Lazy<XmlSerializer> _serializer =
+            new Lazy<XmlSerializer>(() => new XmlSerializer(typeof(DataModel.Trias)));
+
         private readonly Uri _triasServiceUri;
 
         public TriasServiceClient(Uri serviceUri, string requestorRef)
@@ -167,7 +170,7 @@ namespace Trias.DataService.v1_0
                 streamWriter.Flush();
                 responseStream.Position = 0;
 
-                var obj = (DataModel.Trias) _serializer.Deserialize(responseStream);
+                var obj = (DataModel.Trias) _serializer.Value.Deserialize(responseStream);
                 return ((ServiceDeliveryStructure) obj.Item).DeliveryPayload;
             }
         }
@@ -176,7 +179,7 @@ namespace Trias.DataService.v1_0
         {
             using (var streamContent = new MemoryStream())
             {
-                _serializer.Serialize(streamContent, inputWrapper);
+                _serializer.Value.Serialize(streamContent, inputWrapper);
                 streamContent.Position = 0;
 
 

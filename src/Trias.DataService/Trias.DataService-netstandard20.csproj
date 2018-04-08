@@ -6,7 +6,7 @@
     <RootNamespace>Trias.DataService</RootNamespace>
     <AssemblyName>Trias.DataService</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0.22</Version>
+    <Version>1.0.0.33</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -36,6 +36,11 @@
 
   <ItemGroup>
     <PackageReference Include="MSBump" Version="2.3.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="v1_1\xsd\" />
+    <Folder Include="v1_2\xsd\" />
   </ItemGroup>
 
 </Project>
